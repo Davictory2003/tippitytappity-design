@@ -17,6 +17,6 @@ classDiagram
   }
   class typingStats{
         - Accurary: int
-        - WPM: int
+        - Speed (WPM): int
   }
 ```
