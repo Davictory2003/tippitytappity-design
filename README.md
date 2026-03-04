@@ -12,7 +12,9 @@ classDiagram
         -string username
         -string email
         -string password
+        -List<TestResult> history
         +login(user, pass) bool
+        +getHistory() List~TestResult~
     }
 
     class PhraseBank {
@@ -25,17 +27,22 @@ classDiagram
         -string currentInput
         -float startTime
         -float endTime
-        +startTest()
+        -User user
+        +startTest(user: User)
         +calculateWPM() int
         +calculateAccuracy() int
+        +generateResult() TestResult
     }
 
     class TestResult {
         -int wpm
         -int accuracy
         -timestamp date
+        -string phraseText
     }
-    User "1" --> "*" TestResult : has
+
+    User "1" --> "*" TestResult : stores history
     TypingTest --> PhraseBank : fetches phrase
-    TypingTest ..> TestResult : generates
+    TypingTest "1" --> "1" User : associated with
+    TypingTest ..> TestResult : creates
 ```
