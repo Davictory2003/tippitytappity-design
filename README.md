@@ -35,4 +35,7 @@ classDiagram
         -int accuracy
         -timestamp date
     }
+    User "1" --> "*" TestResult : has
+    TypingTest --> PhraseBank : fetches phrase
+    TypingTest ..> TestResult : generates
 ```
